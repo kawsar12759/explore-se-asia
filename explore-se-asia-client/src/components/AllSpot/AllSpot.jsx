@@ -1,7 +1,7 @@
 
 const AllSpot = () => {
     return (
-        <div>
+        <div className="min-h-screen">
             
         </div>
     );

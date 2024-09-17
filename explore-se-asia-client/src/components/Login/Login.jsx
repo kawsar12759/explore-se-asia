@@ -3,7 +3,7 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../providers/AuthProvider";
 
@@ -12,6 +12,15 @@ const Login = () => {
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     const emailRef = useRef();
+    const location = useLocation();
+    const showToast = location.state?.fromProtected;
+    const fromLogout = location.state?.fromLogout;
+    useEffect(() => {
+        if (showToast && !fromLogout) {
+            toast.info('Please sign in to gain full access.');
+            navigate('/login', { replace: true, state: {} });
+        }
+    }, [showToast, fromLogout, navigate]);
     useEffect(()=>{
         if(user){
             navigate('/');
