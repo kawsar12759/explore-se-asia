@@ -8,30 +8,41 @@ const UpdateProfile = () => {
         e.preventDefault();
         const name = e.target.name.value;
         const photo = e.target.photourl.value;
+        Swal.fire({
+            title: "Are you sure?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Update!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                profileUpdate(name, photo)
+                    .then(() => {
+                        // Profile successfully updated
+                        // You may want to add a success message here
 
-        profileUpdate(name, photo)
-            .then(() => {
-                // Profile successfully updated
-                // You may want to add a success message here
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'User Profile Updated Successfully',
+                            icon: 'success',
+                            confirmButtonText: 'Okay'
+                        })
+                            .then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.reload();
+                                }
+                            });
 
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'User Profile Updated Successfully',
-                    icon: 'success',
-                    confirmButtonText: 'Okay'
-                })
-                    .then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.reload();
-                        }
+                    })
+                    .catch(error => {
+                        // An error occurred
+                        // You may want to add an error message here
+                        console.error(error);
                     });
+            }
+        });
 
-            })
-            .catch(error => {
-                // An error occurred
-                // You may want to add an error message here
-                console.error(error);
-            });
     };
     return (
         <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center py-10 px-6">
