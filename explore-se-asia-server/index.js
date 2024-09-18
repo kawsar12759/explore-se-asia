@@ -30,7 +30,11 @@ async function run() {
 
     const spotCollection = client.db('exploreSEAsiaDB').collection('spots');
 
-
+    app.get('/spots', async(req,res)=>{
+        const cursor = spotCollection.find();
+        const result = await cursor.toArray();
+        res.send(result);
+    })
     app.post('/spots', async(req,res)=>{
         const newSpot = req.body;
         console.log(newSpot);
