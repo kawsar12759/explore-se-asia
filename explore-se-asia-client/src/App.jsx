@@ -7,11 +7,11 @@ function App() {
   
 
   return (
-    <>
+    <div style={{minWidth:'640px'}}>
       <Navbar></Navbar>    
       <Outlet></Outlet>
       <Footer></Footer>
-    </>
+    </div>
   )
 }
 

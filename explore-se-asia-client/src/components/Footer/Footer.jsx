@@ -5,8 +5,8 @@ import youtubeLogo from '../../assets/youtube.png'
 import logo from '../../../public/logo.png'
 const Footer = () => {
     return (
-        <footer className="bg-[#228B22] text-white py-10 px-6">
-            <div className="container mx-auto grid grid-cols-1 md:grid-cols-5 gap-8">
+        <footer className="bg-[#228B22] text-white py-10 px-16">
+            <div className="mx-auto grid grid-cols-1 md:grid-cols-5 gap-8">
                 {/* ExploreSEAsia Description */}
                 <div className="col-span-1 md:col-span-2 pr-8">
                     <img className='h-14 w-14 mb-4' src={logo} alt="" />
@@ -36,7 +36,7 @@ const Footer = () => {
                 </div>
 
                 {/* Social Media */}
-                <div className="col-span-1">
+                <div className="col-span-1 min-w-fit">
                     <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
                     <div className="flex space-x-4">
                         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#FFD700]">

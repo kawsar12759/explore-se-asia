@@ -16,6 +16,7 @@ import AddSpot from './components/AddSpot/AddSpot.jsx';
 import MyList from './components/MyList/MyList.jsx';
 import UpdateProfile from './components/UpdateProfile/UpdateProfile.jsx';
 import SpotDetails from './components/SpotDetails/SpotDetails.jsx';
+import UpdateSpot from './components/UpdateSpot/UpdateSpot.jsx';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
       {
         path: '/my-list',
         element: <PrivateRoute><MyList></MyList></PrivateRoute>
+      },
+      {
+        path:'/update-spot/:id',
+        element:<PrivateRoute><UpdateSpot></UpdateSpot></PrivateRoute>,
+        loader: ({ params }) =>fetch(`http://localhost:5000/spots/${params.id}`)
       },
       {
         path: 'update-profile',

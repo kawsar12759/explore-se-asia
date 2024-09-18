@@ -42,10 +42,40 @@ async function run() {
             const result = await spotCollection.findOne(query);
             res.send(result);
         })
+        app.get('/spots/byuser/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { userEmail: id };
+            const cursor = await spotCollection.find(query);
+            const result = await cursor.toArray();
+            res.send(result);
+        })
         app.post('/spots', async (req, res) => {
             const newSpot = req.body;
             console.log(newSpot);
             const result = await spotCollection.insertOne(newSpot);
+            res.send(result);
+        })
+
+        app.put('/spots/:id', async(req,res)=>{
+            const id = req.params.id;
+            const filter = { _id: new ObjectId(id) }
+            const options = { upsert: true };
+            const updatedSpot = req.body;
+            const spot = {
+                $set:{
+                    spotName:updatedSpot.spotName, country:updatedSpot.country, location:updatedSpot.location, image:updatedSpot.image, description:updatedSpot.description, totalVisitors:updatedSpot.totalVisitors, seasonality:updatedSpot.seasonality, averageCost:updatedSpot.averageCost, travelDuration:updatedSpot.travelDuration, userName:updatedSpot.userName, userEmail:updatedSpot.userEmail
+                }
+            }
+            const result = await spotCollection.updateOne(filter,spot,options);
+            res.send(result);
+
+        })
+
+
+        app.delete('/spots/:id', async (req,res)=>{
+            const id = req.params.id;
+            const query = {_id: new ObjectId(id)};
+            const result = await spotCollection.deleteOne(query);
             res.send(result);
         })
 

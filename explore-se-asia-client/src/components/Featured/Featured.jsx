@@ -6,7 +6,7 @@ import travelDurationPng from '../../assets/duration.png'
 const Featured = () => {
     const touristSpots = useLoaderData();
     return (
-        <div className="bg-gray-100 min-h-screen py-16 px-8">
+        <div className="bg-gray-100 py-16 px-8">
             <div className="container mx-auto px-4">
                 <h1 className="text-3xl font-bold mb-12 text-center">Featured Tourist Spots</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-8">

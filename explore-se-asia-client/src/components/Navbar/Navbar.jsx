@@ -23,15 +23,16 @@ const Navbar = () => {
         <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#8FBC8F] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#8FBC8F] active:!text-[#FFFFF0]"} to='/all-spots'>All Spots</NavLink></li>
         {user && <>   <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#8FBC8F] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#8FBC8F] active:!text-[#FFFFF0]"} to='/add-spot'>Add Spot</NavLink></li>
             <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#8FBC8F] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#8FBC8F] active:!text-[#FFFFF0]"} to='/my-list'>My List</NavLink></li>
+            
         </>}
 
     </>
     return (
-        <div className="sticky top-0 z-50">
-            <div className="navbar bg-[#228B22] text-white px-24">
+        <div className="sticky bg-[#228B22] top-0 z-50">
+            <div className="navbar px-16 mx-auto text-white ">
                 <div className="navbar-start">
                     <div className="dropdown ">
-                        <div tabIndex={0} role="button" className="btn btn-ghost  lg:hidden">
+                        <div tabIndex={0} role="button" className="btn btn-ghost  xl:hidden">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5"
@@ -57,14 +58,14 @@ const Navbar = () => {
                         <img className="h-8 w-8 mr-1" src={logo} alt="" />
                         ExploreSEAsia</Link>
                 </div>
-                <div className="navbar-center hidden lg:flex font-medium">
+                <div className="navbar-center hidden xl:flex font-medium">
                     <ul className="menu menu-horizontal px-1">
                         {navLinks}
                     </ul>
                 </div>
                 <div className="navbar-end">
                     {user && <><Link to='update-profile' className="btn btn-ghost">
-                        <p className="text-lg mr-4">{user.displayName}</p>
+                        <p className="hidden md:block text-lg mr-4">{user.displayName}</p>
                         <div className="">
                             <img className="w-12 h-12 rounded-full"
                                 alt={user.displayName}
