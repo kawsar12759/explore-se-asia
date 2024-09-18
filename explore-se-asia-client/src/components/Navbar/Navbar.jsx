@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [imageLoaded, setImageLoaded] = useState(false);
     const navigate = useNavigate();
     const handleLogOut = () => {
         logOut()
@@ -14,6 +15,9 @@ const Navbar = () => {
                 // An error happened.
             });
     }
+    const handleError = () => {
+        setImageLoaded(true);
+      };
     const navLinks = <>
         <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#8FBC8F] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#8FBC8F] active:!text-[#FFFFF0]"} to='/'>Home</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#8FBC8F] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#8FBC8F] active:!text-[#FFFFF0]"} to='/all-spot'>All Spots</NavLink></li>
@@ -64,7 +68,8 @@ const Navbar = () => {
                         <div className="">
                             <img className="w-12 h-12 rounded-full"
                                 alt={user.displayName}
-                                src={user.photoURL} />
+                                src={imageLoaded?"https://i.ibb.co.com/St8w19S/user.png":user.photoURL}
+                                onError={handleError} />
                         </div></Link></>}
                     {user ?
                         <button onClick={handleLogOut} className="btn bg-[#FF4500] text-[#FFFFFF] hover:bg-[#FF6347] border-none px-6 py-2 rounded-lg font-semibold ml-2">

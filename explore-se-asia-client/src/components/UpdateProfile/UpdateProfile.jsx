@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from 'sweetalert2'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const UpdateProfile = () => {
     const { user, profileUpdate } = useContext(AuthContext);
     const handleUpdateProfile = (e) => {
         e.preventDefault();
-        const name = e.target.name.value;
-        const photo = e.target.photourl.value;
+
         Swal.fire({
             title: "Are you sure?",
             icon: "warning",
@@ -17,6 +17,13 @@ const UpdateProfile = () => {
             confirmButtonText: "Yes, Update!"
         }).then((result) => {
             if (result.isConfirmed) {
+                const name = e.target.name.value;
+                const photo = e.target.photourl.value;
+                if (!/^https?:\/\/(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}(?:\/[^\s]*)?\.(?:jpg|jpeg|png|gif|bmp|webp)$/.test(photo)) {
+                    toast.warning('Provide a valid Photo URL');
+                    e.target.reset();
+                    return;
+                }
                 profileUpdate(name, photo)
                     .then(() => {
                         // Profile successfully updated
@@ -46,6 +53,7 @@ const UpdateProfile = () => {
     };
     return (
         <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center py-10 px-6">
+            <ToastContainer />
             <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center mb-2">Update Your Profile</h1>
             <p className="mb-8">Manage your personal details to keep your profile up-to-date.</p>
             <img className="h-32 w-32" src={user.photoURL} alt="" />

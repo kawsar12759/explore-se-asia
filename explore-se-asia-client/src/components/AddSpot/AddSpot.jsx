@@ -1,16 +1,64 @@
 import { useContext } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "../../providers/AuthProvider";
-
+import Swal from 'sweetalert2'
 const AddSpot = () => {
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
+    const handleAddTouristSpot = e => {
+        e.preventDefault();
+        const spotName = e.target.touristsSpotName.value;
+        const country = e.target.countryName.value;
+        const location = e.target.location.value;
+        const image = e.target.imageUrl.value;
+        const description = e.target.shortDescription.value;
+        const totalVisitors = e.target.totalVisitorsPerYear.value;
+        const seasonality = e.target.seasonality.value;
+        const averageCost = e.target.averageCost.value;
+        const travelDuration = e.target.travelDuration.value;
+        const userName = e.target.userName.value;
+        const userEmail = e.target.userEmail.value;
+        if (!/^https?:\/\/(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}(?:\/[^\s]*)?\.(?:jpg|jpeg|png|gif|bmp|webp)$/.test(image)) {
+            toast.warning('Provide a valid Photo URL');
+            return;
+        }
+        else if(description.length<25){
+            toast.warning('Description must contain at least 25 characters');
+            return;
+        }
+        const newSpot = { spotName, country, location, image, description, totalVisitors, seasonality, averageCost, travelDuration, userName, userEmail };
+
+        fetch('http://localhost:5000/spots', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newSpot)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Tourist Spot Added',
+                        icon: 'success',
+                        confirmButtonText: 'Okay'
+                    })
+                    e.target.reset();
+                }
+            })
+
+    }
     return (
         <div
             className="min-h-screen bg-cover bg-center flex items-center justify-center py-10 px-6"
             style={{ backgroundImage: "url('https://i.ibb.co.com/4J5LWvG/pexels-pixabay-38238.jpg')" }}  // Add your background image URL here
         >
+            <ToastContainer />
             <div className="bg-white bg-opacity-80 shadow-xl rounded-xl p-10 max-w-3xl w-full">
                 <h2 className="text-4xl font-bold text-blue-900 mb-8 text-center">Add a New Tourist Spot</h2>
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleAddTouristSpot}>
                     {/* Tourist Spot Name Field */}
                     <div>
                         <label htmlFor="touristsSpotName" className="block text-lg font-medium text-gray-700 mb-1">Tourist Spot Name</label>
@@ -113,7 +161,7 @@ const AddSpot = () => {
                         <div className="w-1/2 mr-5">
                             <label htmlFor="averageCost" className="block text-lg font-medium text-gray-700 mb-1">Average Cost</label>
                             <input
-                                type="text"
+                                type="number"
                                 id="averageCost"
                                 name="averageCost"
                                 placeholder="In USD ($)"
@@ -167,7 +215,7 @@ const AddSpot = () => {
                             />
                         </div>
 
-                        
+
                     </div>
                     {/* Add Button */}
                     <div className="text-center">

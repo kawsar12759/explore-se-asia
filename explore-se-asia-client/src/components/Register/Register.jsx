@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaEye } from "react-icons/fa";
@@ -10,6 +10,7 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const navigate = useNavigate();
+    
     const { user, createUser, profileUpdate, setIsSigningUp } = useContext(AuthContext);
     useEffect(()=>{
         if(user){
@@ -55,6 +56,7 @@ const Register = () => {
                 profileUpdate(name, photo)
                     .then(() => {
                         setIsSigningUp(false);
+                        window.location.reload();
                     })
                     .catch(error => {
                         // An error occurred
