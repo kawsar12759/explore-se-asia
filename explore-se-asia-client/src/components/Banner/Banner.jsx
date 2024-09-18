@@ -19,7 +19,7 @@ const Banner = () => {
                             From the crystal-clear waters of Thailand to the pristine, untouched sands of the Philippines, Southeast Asia's beaches offer breathtaking views, endless relaxation, and unforgettable sunsets. Whether you're looking to unwind or embark on a seaside adventure, your perfect beach getaway awaits.
                         </p>
                         <div className='flex justify-center font-medium'>
-                            <Link to='/all-spot'> <button className="btn border-none bg-[#0D9488] text-white  py-3 px-5 rounded hover:bg-[#0F766E]">Explore Tourist Spots</button></Link>
+                            <Link to='/all-spots'> <button className="btn border-none bg-[#0D9488] text-white  py-3 px-5 rounded hover:bg-[#0F766E]">Explore Tourist Spots</button></Link>
                         </div>
                     </div>
                     <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -37,7 +37,7 @@ const Banner = () => {
                             Journey through the ancient temples of Cambodia, marvel at Indonesia's majestic monuments, and immerse yourself in centuries-old traditions that thrive in Southeast Asia's vibrant cultural landscape. Every destination offers a unique window into the history, spirituality, and creativity of this remarkable region.
                         </p>
                         <div className='flex justify-center font-medium'>
-                            <Link to='/all-spot'><button className="btn border-none bg-[#0D9488] text-white  py-3 px-5 rounded hover:bg-[#0F766E]">Explore Tourist Spots</button></Link>
+                            <Link to='/all-spots'><button className="btn border-none bg-[#0D9488] text-white  py-3 px-5 rounded hover:bg-[#0F766E]">Explore Tourist Spots</button></Link>
                         </div>
                     </div>
                     <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -55,7 +55,7 @@ const Banner = () => {
                             Step off the beaten path and uncover Southeast Asia's secret treasures. From secluded islands and untouched waterfalls to peaceful villages and remote landscapes, these hidden gems offer tranquility, beauty, and a chance to connect with nature and local cultures in a way few have experienced.
                         </p>
                         <div className='flex justify-center font-medium'>
-                            <Link to='/all-spot'><button className="btn border-none bg-[#0D9488] text-white  py-3 px-5 rounded hover:bg-[#0F766E]">Explore Tourist Spots</button></Link>
+                            <Link to='/all-spots'><button className="btn border-none bg-[#0D9488] text-white  py-3 px-5 rounded hover:bg-[#0F766E]">Explore Tourist Spots</button></Link>
                         </div>
 
                     </div>
@@ -74,7 +74,7 @@ const Banner = () => {
                             From Singapore's iconic skyline and futuristic architecture to the vibrant street markets and historic sites of Kuala Lumpur and Bangkok, Southeast Asia’s cities are as diverse as they are exciting. Immerse yourself in the region’s dynamic urban cultures, where tradition meets modernity.
                         </p>
                         <div className='flex justify-center font-medium'>
-                            <Link to='/all-spot'><button className="btn border-none bg-[#0D9488] text-white  py-3 px-5 rounded hover:bg-[#0F766E]">Explore Tourist Spots</button></Link>
+                            <Link to='/all-spots'><button className="btn border-none bg-[#0D9488] text-white  py-3 px-5 rounded hover:bg-[#0F766E]">Explore Tourist Spots</button></Link>
                         </div>
                     </div>
                     <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">

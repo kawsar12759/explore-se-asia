@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-
+import logo from '../../../public/logo.png'
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -20,7 +20,7 @@ const Navbar = () => {
       };
     const navLinks = <>
         <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#8FBC8F] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#8FBC8F] active:!text-[#FFFFF0]"} to='/'>Home</NavLink></li>
-        <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#8FBC8F] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#8FBC8F] active:!text-[#FFFFF0]"} to='/all-spot'>All Spots</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#8FBC8F] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#8FBC8F] active:!text-[#FFFFF0]"} to='/all-spots'>All Spots</NavLink></li>
         {user && <>   <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#8FBC8F] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#8FBC8F] active:!text-[#FFFFF0]"} to='/add-spot'>Add Spot</NavLink></li>
             <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#8FBC8F] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#8FBC8F] active:!text-[#FFFFF0]"} to='/my-list'>My List</NavLink></li>
         </>}
@@ -54,7 +54,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <Link to='/' className="btn btn-ghost text-2xl">
-                        <img className="h-8 w-8 mr-1" src="logo.png" alt="" />
+                        <img className="h-8 w-8 mr-1" src={logo} alt="" />
                         ExploreSEAsia</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex font-medium">

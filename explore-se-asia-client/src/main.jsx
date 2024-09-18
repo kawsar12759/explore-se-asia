@@ -15,6 +15,7 @@ import PrivateRoute from './routes/PrivateRoute.jsx';
 import AddSpot from './components/AddSpot/AddSpot.jsx';
 import MyList from './components/MyList/MyList.jsx';
 import UpdateProfile from './components/UpdateProfile/UpdateProfile.jsx';
+import SpotDetails from './components/SpotDetails/SpotDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -23,24 +24,31 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader:() => fetch('http://localhost:5000/spots')
       },
       {
-        path: "/all-spot",
+        path: "/all-spots",
         element: <AllSpot></AllSpot>,
-        loader:()=>fetch('http://localhost:5000/spots')
+        loader: () => fetch('http://localhost:5000/spots')
       },
       {
-        path:'/add-spot',
-        element:<PrivateRoute><AddSpot></AddSpot></PrivateRoute>
+        path: '/spot-details/:id',
+        element: <PrivateRoute><SpotDetails></SpotDetails></PrivateRoute>,
+        loader: ({ params }) =>fetch(`http://localhost:5000/spots/${params.id}`)
       },
       {
-        path:'/my-list',
-        element:<PrivateRoute><MyList></MyList></PrivateRoute>
+        path: '/add-spot',
+        element: <PrivateRoute><AddSpot></AddSpot></PrivateRoute>
+      },
+
+      {
+        path: '/my-list',
+        element: <PrivateRoute><MyList></MyList></PrivateRoute>
       },
       {
-        path:'update-profile',
-        element:<PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
+        path: 'update-profile',
+        element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
       },
       {
         path: '/login',

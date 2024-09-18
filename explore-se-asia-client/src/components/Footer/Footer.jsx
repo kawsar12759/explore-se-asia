@@ -2,13 +2,14 @@ import facebookLogo from '../../assets/facebook.png'
 import twitterLogo from '../../assets/twitter.png'
 import instaLogo from '../../assets/insta.png'
 import youtubeLogo from '../../assets/youtube.png'
+import logo from '../../../public/logo.png'
 const Footer = () => {
     return (
         <footer className="bg-[#228B22] text-white py-10 px-6">
             <div className="container mx-auto grid grid-cols-1 md:grid-cols-5 gap-8">
                 {/* ExploreSEAsia Description */}
                 <div className="col-span-1 md:col-span-2 pr-8">
-                    <img className='h-14 w-14 mb-4' src="logo.png" alt="" />
+                    <img className='h-14 w-14 mb-4' src={logo} alt="" />
                     <h3 className="text-2xl font-bold mb-4">ExploreSEAsia</h3>
                     <p className="text-sm">
                         Discover Southeast Asia's most beautiful places, hidden gems, and vibrant cities. Explore cultural wonders, adventure spots, and breathtaking landscapes.

@@ -1,4 +1,5 @@
 import Banner from "../Banner/Banner";
+import Featured from "../Featured/Featured";
 
 const Home = () => {
     return (
@@ -12,6 +13,7 @@ const Home = () => {
                     </p>
                 </div>
             </section>
+            <Featured></Featured>
         </div>
     );
 };
