@@ -17,26 +17,28 @@ import MyList from './components/MyList/MyList.jsx';
 import UpdateProfile from './components/UpdateProfile/UpdateProfile.jsx';
 import SpotDetails from './components/SpotDetails/SpotDetails.jsx';
 import UpdateSpot from './components/UpdateSpot/UpdateSpot.jsx';
+import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
         element: <Home></Home>,
-        loader:() => fetch('http://localhost:5000/spots')
+        loader: () => fetch('https://explore-se-asia-server-hwtekkgp3-md-kawsar-hossains-projects.vercel.app/spots')
       },
       {
         path: "/all-spots",
         element: <AllSpot></AllSpot>,
-        loader: () => fetch('http://localhost:5000/spots')
+        loader: () => fetch('https://explore-se-asia-server-hwtekkgp3-md-kawsar-hossains-projects.vercel.app/spots')
       },
       {
         path: '/spot-details/:id',
         element: <PrivateRoute><SpotDetails></SpotDetails></PrivateRoute>,
-        loader: ({ params }) =>fetch(`http://localhost:5000/spots/${params.id}`)
+        loader: ({ params }) => fetch(`https://explore-se-asia-server-hwtekkgp3-md-kawsar-hossains-projects.vercel.app/spots/${params.id}`)
       },
       {
         path: '/add-spot',
@@ -48,9 +50,9 @@ const router = createBrowserRouter([
         element: <PrivateRoute><MyList></MyList></PrivateRoute>
       },
       {
-        path:'/update-spot/:id',
-        element:<PrivateRoute><UpdateSpot></UpdateSpot></PrivateRoute>,
-        loader: ({ params }) =>fetch(`http://localhost:5000/spots/${params.id}`)
+        path: '/update-spot/:id',
+        element: <PrivateRoute><UpdateSpot></UpdateSpot></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://explore-se-asia-server-hwtekkgp3-md-kawsar-hossains-projects.vercel.app/spots/${params.id}`)
       },
       {
         path: 'update-profile',

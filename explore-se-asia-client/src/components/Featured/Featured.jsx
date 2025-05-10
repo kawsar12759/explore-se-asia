@@ -6,9 +6,9 @@ import travelDurationPng from '../../assets/duration.png'
 const Featured = () => {
     const touristSpots = useLoaderData();
     return (
-        <div className="bg-gray-100 py-16 px-8">
-            <div className="container mx-auto px-4">
-                <h1 className="text-3xl font-bold mb-12 text-center">Featured Tourist Spots</h1>
+        <div className="bg-gray-100 text-black py-16 px-6 xs:px-10">
+            <div className="container mx-auto">
+                <h1 className="text-2xl sm:text-3xl font-bold mb-12 text-center">Featured Tourist Spots</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-8">
                     {touristSpots.slice(0, 6).map((spot) => (
                         <div key={spot._id} className="bg-white shadow-lg rounded-lg overflow-hidden">

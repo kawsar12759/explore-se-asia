@@ -3,13 +3,13 @@ import { FaLocationDot } from "react-icons/fa6";
 const SpotDetails = () => {
     const spot = useLoaderData();
     return (
-        <div className="bg-gray-100 ">
-            <div className="max-w-4xl mx-auto p-14">
+        <div className="bg-gray-100 text-black">
+            <div className="max-w-4xl mx-auto p-8 sm:p-14">
                 
-                <h2 className="text-4xl font-bold mb-2">{spot.spotName}</h2>
+                <h2 className="text-3xl xs:text-4xl font-bold mb-2">{spot.spotName}</h2>
                 <div className="flex text-gray-600 items-center mb-3">
-                    <FaLocationDot className="text-lg font-medium mr-1" />
-                    <p className="text-lg font font-medium">{spot.location}, {spot.country}</p>
+                    <FaLocationDot className="text-md xs:text-lg font-medium mr-1" />
+                    <p className="text-md xs:text-lg font font-medium">{spot.location}, {spot.country}</p>
                 </div>
 
                 <img src={spot.image} alt={spot.spotName} className="w-full rounded-lg object-cover" />

@@ -55,8 +55,8 @@ const UpdateProfile = () => {
         <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center py-10 px-6">
             <ToastContainer />
             <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center mb-2">Update Your Profile</h1>
-            <p className="mb-8">Manage your personal details to keep your profile up-to-date.</p>
-            <img className="h-32 w-32" src={user.photoURL} alt="" />
+            <p className="mb-8 text-center">Manage your personal details to keep your profile up-to-date.</p>
+            <img className="h-32 w-32 mb-3" src={user.photoURL} alt="" />
             <p className="text-xl font-bold text-gray-800 mb-6 text-center mb-5">{user.displayName}</p>
             <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
 
@@ -69,7 +69,7 @@ const UpdateProfile = () => {
                             id="name"
                             name="name"
                             defaultValue={user.displayName}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB]"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB] bg-white"
                             required
                         />
                     </div>
@@ -95,7 +95,7 @@ const UpdateProfile = () => {
                             id="photo-url"
                             name="photourl"
                             defaultValue={user.photoURL}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB]"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB] bg-white"
                             placeholder="https://example.com/photo.jpg"
                         />
                     </div>

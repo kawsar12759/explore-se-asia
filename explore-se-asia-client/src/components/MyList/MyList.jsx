@@ -9,7 +9,7 @@ const MyList = () => {
     const [myAddedSpot, setMyAddedSpot] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/spots/byuser/${user.email}`)
+        fetch(`https://explore-se-asia-server-hwtekkgp3-md-kawsar-hossains-projects.vercel.app/spots/byuser/${user.email}`)
             .then(res => res.json())
             .then(data => setMyAddedSpot(data));
 
@@ -27,7 +27,7 @@ const MyList = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/spots/${id}`, {
+                fetch(`https://explore-se-asia-server-hwtekkgp3-md-kawsar-hossains-projects.vercel.app/spots/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -49,8 +49,8 @@ const MyList = () => {
 
 
     return (
-        <div className='px-10'>
-            {myAddedSpot.length > 0 ? <div className='container  py-12  mx-auto'>
+        <div className='px-10 bg-white text-black'>
+            {myAddedSpot.length > 0 ? <div className='container bg-white py-12  mx-auto'>
                 <h1 className='text-3xl font-semibold text-center'>Your Added Tourist Spot/s</h1>
                 <div className="overflow-x-auto">
                     <table className="table table-lg mt-12">
@@ -74,14 +74,14 @@ const MyList = () => {
                                     <td>{spot.location}, {spot.country}</td>
                                     <td>{spot.seasonality}</td>
                                     <td className='text-center'><div className='lg:flex lg:justify-center'>
-                                        <div ><Link to={`/update-spot/${spot._id}`}><button className='btn mb-3 lg:mb-0 lg:mr-3'><FiEdit className='text-xl font-bold text-green-500' /></button></Link></div><div><button className='btn' onClick={() => handleDeleteSpot(spot._id)}><RiDeleteBin6Line className='text-xl font-bold text-green-500' /></button></div></div></td>
+                                        <div ><Link to={`/update-spot/${spot._id}`}><button className='btn border-none bg-white mb-3 lg:mb-0 lg:mr-3'><FiEdit className='text-xl  font-bold text-green-500' /></button></Link></div><div><button className='btn border-none bg-white' onClick={() => handleDeleteSpot(spot._id)}><RiDeleteBin6Line className='text-xl  font-bold text-green-500' /></button></div></div></td>
                                 </tr></>
                             ))}
                         </tbody>
                     </table>
                 </div>
-            </div> : <div className=' min-h-screen flex justify-center items-center'><div><p className='text-center text-3xl font-semibold mb-7'>You haven't added any tourist Spot yet!</p>
-                <div className='flex justify-center'><Link to='/add-spot'><button className='btn bg-[#228B22] text-white hover:bg-[#1e771e]'>Add Spot</button></Link></div></div></div>}
+            </div> : <div className=' min-h-screen bg-white text-black flex justify-center items-center'><div><p className='text-center text-3xl font-semibold mb-7'>You haven't added any tourist Spot yet!</p>
+                <div className='flex justify-center'><Link to='/add-spot'><button className='btn border-none bg-[#228B22] text-white hover:bg-[#1e771e]'>Add Spot</button></Link></div></div></div>}
         </div>
     );
 };

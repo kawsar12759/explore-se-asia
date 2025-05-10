@@ -7,7 +7,7 @@ function App() {
   
 
   return (
-    <div style={{minWidth:'640px'}}>
+    <div style={{minWidth:'350px'}}>
       <Navbar></Navbar>    
       <Outlet></Outlet>
       <Footer></Footer>

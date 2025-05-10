@@ -69,10 +69,10 @@ const Register = () => {
 
     }
     return (
-        <div className="bg-gray-100 min-h-screen flex items-center justify-center py-10 px-6">
+        <div className="bg-gray-100  flex items-center justify-center py-20 sm:py-32 px-6">
             <ToastContainer />
             <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
-                <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Create Your Account</h2>
+                <h2 className="text-2xl xs:text-3xl font-bold text-gray-800 mb-6 text-center">Create Your Account</h2>
                 <form onSubmit={handleSignUp}>
                     {/* Name Field */}
                     <div className="mb-4">
@@ -81,7 +81,7 @@ const Register = () => {
                             type="text"
                             id="name"
                             name="name"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB]"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB] bg-white"
                             required
                         />
                     </div>
@@ -93,7 +93,7 @@ const Register = () => {
                             type="email"
                             id="email"
                             name="email"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB]"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB] bg-white" 
                             required
                         />
                     </div>
@@ -104,7 +104,7 @@ const Register = () => {
                             type="url"
                             id="photo-url"
                             name="photourl"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB]"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB] bg-white"
                             placeholder="https://example.com/photo.jpg"
                         />
                     </div>
@@ -117,10 +117,10 @@ const Register = () => {
                                 id="password"
                                 name="password"
                                 placeholder='Must contain both uppercase and lowercase'
-                                className="w-full px-4 py-2 border placeholder:text-sm border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB]"
+                                className="w-full px-4 py-2 border placeholder:text-sm border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB] bg-white"
                                 required
                             />
-                            <span onClick={() => setShowPassword(!showPassword)} className='absolute bottom-3 right-1 mb-0 cursor-pointer'>
+                            <span onClick={() => setShowPassword(!showPassword)} className='absolute bottom-3 right-1 mb-0 cursor-pointer text-black'>
                                 {
                                     showPassword ? <FaEyeSlash className="w-8" /> : <FaEye className="w-8" />
                                 }
@@ -137,10 +137,10 @@ const Register = () => {
                                 type={showConfirmPassword ? "text" : "password"}
                                 id="confirm-password"
                                 name="confirmpassword"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB]"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB] bg-white"
                                 required
                             />
-                            <span onClick={() => setShowConfirmPassword(!showConfirmPassword)} className='absolute bottom-3 right-1 mb-0 cursor-pointer'>
+                            <span onClick={() => setShowConfirmPassword(!showConfirmPassword)} className='absolute bottom-3 right-1 mb-0 text-black cursor-pointer'>
                                 {
                                     showConfirmPassword ? <FaEyeSlash className="w-8" /> : <FaEye className="w-8" />
                                 }

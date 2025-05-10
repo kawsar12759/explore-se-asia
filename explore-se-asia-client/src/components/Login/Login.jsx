@@ -75,11 +75,11 @@ const Login = () => {
     }
 
     return (
-        <div className="bg-gray-100 min-h-screen flex items-center justify-center py-10 px-6">
+        <div className="bg-gray-100  flex items-center justify-center py-20 sm:py-32 px-6">
             <ToastContainer />
             <dialog id="my_modal_5" className="modal  modal-bottom sm:modal-middle">
 
-                <div className="modal-box">
+                <div className="modal-box bg-white text-black">
                     <h1 className="text-2xl font-semibold mb-4">Reset Password</h1>
                     <hr className="text-black mb-3" />
                     <form method="dialog" >
@@ -87,13 +87,13 @@ const Login = () => {
                             <label className="label mb-4">
                                 <span className="label-text text-base font-medium">Enter the email associated with your account to receive a password reset link</span>
                             </label>
-                            <input type="email" name="emailforreset" ref={emailRef} placeholder="Enter Your Email" className="input input-bordered mb-3" />
+                            <input type="email" name="emailforreset" ref={emailRef} placeholder="Enter Your Email" className="input input-bordered mb-3 bg-white" />
 
                         </div>
                         <hr className="mb-3" />
                         <div className="flex justify-end">
-                            <button className="btn bg-[#F3F4F6] text-[#374151] hover:bg-[#E5E7EB] hover:text-[#111827] mr-3">Cancel</button>
-                            <button onClick={handleForgetPass} className="btn bg-[#00BFFF] text-[#FFFFFF] hover:bg-[#4169E1] hover:text-[#F9FAFB]">Reset Password</button>
+                            <button className="btn bg-[#F3F4F6] border-none text-[#374151] hover:bg-[#E5E7EB] hover:text-[#111827] mr-3">Cancel</button>
+                            <button onClick={handleForgetPass} className="btn bg-[#00BFFF] border-none text-[#FFFFFF] hover:bg-[#4169E1] hover:text-[#F9FAFB]">Reset Password</button>
                         </div>
 
 
@@ -102,7 +102,7 @@ const Login = () => {
             </dialog>
 
             <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
-                <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Login to Your Account</h2>
+                <h2 className="text-2xl xs:text-3xl font-bold text-gray-800 mb-6 text-center">Login to Your Account</h2>
                 <form onSubmit={handleLogIn}>
                     {/* Email Field */}
                     <div className="mb-4">
@@ -111,7 +111,7 @@ const Login = () => {
                             type="email"
                             id="email"
                             name="email"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB]"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB] bg-white"
                             required
                         />
                     </div>
@@ -124,10 +124,10 @@ const Login = () => {
                                 type={showPassword ? "text" : "password"}
                                 id="password"
                                 name="password"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB]"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#87CEEB] bg-white"
                                 required
                             />
-                            <span onClick={() => setShowPassword(!showPassword)} className='absolute bottom-3 right-1 mb-0 cursor-pointer'>
+                            <span onClick={() => setShowPassword(!showPassword)} className='absolute bottom-3 text-black right-1 mb-0 cursor-pointer'>
                                 {
                                     showPassword ? <FaEyeSlash className="w-8" /> : <FaEye className="w-8" />
                                 }

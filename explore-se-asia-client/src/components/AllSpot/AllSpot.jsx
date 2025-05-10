@@ -8,10 +8,10 @@ const AllSpot = () => {
     const [touristSpots, setTouristSpots] = useState(loadedSpots);
     const [dataLength, setDataLength] = useState(12);
     return (
-        <div className="bg-gray-100 min-h-screen py-10">
-            <div className="container mx-auto px-4">
+        <div className="bg-gray-100 text-black min-h-screen py-10">
+            <div className="container mx-auto xs:px-2">
                 <h1 className="text-3xl font-bold mb-12 text-center">All Tourist Spots</h1>
-                <div className="grid px-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <div className="grid px-5 xs:px-8 sm:px-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                     {touristSpots.slice(0, dataLength).map((spot) => (
                         <div key={spot._id} className="bg-white shadow-lg rounded-lg overflow-hidden">
                             <div className="relative">
