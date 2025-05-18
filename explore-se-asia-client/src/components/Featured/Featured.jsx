@@ -36,7 +36,7 @@ const Featured = () => {
 
                                 <p className="font-semibold">Travel Season: {spot.seasonality}</p>
                                 <Link to={`/spot-details/${spot._id}`}>
-                                    <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 font-medium">View Details</button>
+                                    <button className="mt-4 bg-[#008080] text-white px-4 py-2 rounded hover:bg-[#006666] font-medium">View Details</button>
                                 </Link>
                             </div>
                         </div>

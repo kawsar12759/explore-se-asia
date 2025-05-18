@@ -105,7 +105,7 @@ const UpdateProfile = () => {
                     {/* Register Button */}
                     <button
                         type="submit"
-                        className="w-full bg-[#00BFFF] text-white py-2 rounded-lg font-semibold hover:bg-[#4169E1]"
+                        className="w-full bg-[#008080] text-white py-2 rounded-lg font-semibold hover:bg-[#006666]"
                     >
                         Update Profile
                     </button>

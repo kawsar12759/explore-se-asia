@@ -81,7 +81,7 @@ const MyList = () => {
                     </table>
                 </div>
             </div> : <div className=' min-h-screen bg-white text-black flex justify-center items-center'><div><p className='text-center text-3xl font-semibold mb-7'>You haven't added any tourist Spot yet!</p>
-                <div className='flex justify-center'><Link to='/add-spot'><button className='btn border-none bg-[#228B22] text-white hover:bg-[#1e771e]'>Add Spot</button></Link></div></div></div>}
+                <div className='flex justify-center'><Link to='/add-spot'><button className='btn border-none bg-[#008080] text-white hover:bg-[#1e771e]'>Add Spot</button></Link></div></div></div>}
         </div>
     );
 };

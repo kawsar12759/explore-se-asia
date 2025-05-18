@@ -221,7 +221,7 @@ const AddSpot = () => {
                     <div className="text-center">
                         <button
                             type="submit"
-                            className="bg-[#00BFFF] hover:bg-[#009ACD] text-white py-3 px-6 rounded-full font-semibold text-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 "
+                            className="bg-[#FFD700] hover:bg-[#FFC107] text-[#008080] py-3 px-6 rounded-full font-semibold text-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 "
                         >
                             Add Tourist Spot
                         </button>

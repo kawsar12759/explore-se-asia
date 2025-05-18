@@ -17,26 +17,26 @@ const Navbar = () => {
     }
     const handleError = () => {
         setImageLoaded(true);
-      };
+    };
     const navLinks = <>
-        <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#8FBC8F] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#8FBC8F] active:!text-[#FFFFF0]"} to='/'>Home</NavLink></li>
-        <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#8FBC8F] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#8FBC8F] active:!text-[#FFFFF0]"} to='/all-spots'>All Spots</NavLink></li>
-        {user && <>   <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#4d614d] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#8FBC8F] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#8FBC8F] active:!text-[#FFFFF0]"} to='/add-spot'>Add Spot</NavLink></li>
-            <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#8FBC8F] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#8FBC8F] active:!text-[#FFFFF0]"} to='/my-list'>My List</NavLink></li>
-            <li className="inline-block sm:hidden"><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#8FBC8F] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#8FBC8F] active:!text-[#FFFFF0]"} to='/update-profile'>{user.displayName}</NavLink></li>
-            
+        <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#20B2AA] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#20B2AA] active:!text-[#FFFFF0]"} to='/'>Home</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#20B2AA] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#20B2AA] active:!text-[#FFFFF0]"} to='/all-spots'>All Spots</NavLink></li>
+        {user && <>   <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#4d614d] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#20B2AA] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#20B2AA] active:!text-[#FFFFF0]"} to='/add-spot'>Add Spot</NavLink></li>
+            <li><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#20B2AA] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#20B2AA] active:!text-[#FFFFF0]"} to='/my-list'>My List</NavLink></li>
+            <li className="inline-block sm:hidden"><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#20B2AA] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#20B2AA] active:!text-[#FFFFF0]"} to='/update-profile'>{user.displayName}</NavLink></li>
+
         </>}
         {
             !user && <>
-            <li className="inline-block xs:hidden"><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#8FBC8F] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#8FBC8F] active:!text-[#FFFFF0]"} to='/login'>Login</NavLink></li>
-            <li className="inline-block xs:hidden"><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#8FBC8F] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#8FBC8F] active:!text-[#FFFFF0]"} to='/register'>Register</NavLink></li>
-            
+                <li className="inline-block xs:hidden"><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#20B2AA] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#20B2AA] active:!text-[#FFFFF0]"} to='/login'>Login</NavLink></li>
+                <li className="inline-block xs:hidden"><NavLink className={({ isActive }) => isActive ? "!bg-[#FFD700] !text-[#006400] hover:bg-[#FFD700] font-semibold hover:text-[#006400] active:!bg-[#20B2AA] active:!text-[#FFFFF0] visited:bg-[#FFD700] visited:text-[#006400]" : "active:!bg-[#20B2AA] active:!text-[#FFFFF0]"} to='/register'>Register</NavLink></li>
+
             </>
         }
 
     </>
     return (
-        <div className="sticky bg-[#228B22] top-0 z-50 shadow-md">
+        <div className="sticky bg-[#008080] top-0 z-50 shadow-md">
             <div className="navbar px-4 sm:px-16 mx-auto text-white ">
                 <div className="navbar-start">
                     <div className="dropdown ">
@@ -56,7 +56,7 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content !bg-[#228B22] opacity-75 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                            className="menu menu-sm dropdown-content !bg-[#008080] opacity-75 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                             {
                                 navLinks
                             }
@@ -77,7 +77,7 @@ const Navbar = () => {
                         <div className="">
                             <img className="w-12 h-12 rounded-full hidden sm:inline-block"
                                 alt={user.displayName}
-                                src={imageLoaded?"https://i.ibb.co.com/St8w19S/user.png":user.photoURL}
+                                src={imageLoaded ? "https://i.ibb.co.com/St8w19S/user.png" : user.photoURL}
                                 onError={handleError} />
                         </div></Link></>}
                     {user ?

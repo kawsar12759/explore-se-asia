@@ -5,7 +5,7 @@ import youtubeLogo from '../../assets/youtube.png'
 import logo from '../../../public/logo.png'
 const Footer = () => {
     return (
-        <footer className="bg-[#228B22] text-white py-10 px-5 sm:px-16">
+        <footer className="bg-[#008080] text-white py-10 px-5 sm:px-16">
             <div className="mx-auto grid grid-cols-1 md:grid-cols-5 gap-8">
                 {/* ExploreSEAsia Description */}
                 <div className="col-span-1 md:col-span-2 pr-8">
