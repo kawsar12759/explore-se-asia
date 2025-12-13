@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "../../providers/AuthProvider";
@@ -6,12 +6,13 @@ import Swal from 'sweetalert2';
 
 const AddSpot = () => {
     const { user } = useContext(AuthContext);
+    const [thumbnail, setThumbnail] = useState(null);
+    const [images, setImages] = useState([]);
     const handleAddTouristSpot = e => {
         e.preventDefault();
         const spotName = e.target.touristsSpotName.value;
         const country = e.target.countryName.value;
         const location = e.target.location.value;
-        const image = e.target.imageUrl.value;
         const description = e.target.shortDescription.value;
         const totalVisitors = e.target.totalVisitorsPerYear.value;
         const seasonality = e.target.seasonality.value;
@@ -19,17 +20,27 @@ const AddSpot = () => {
         const travelDuration = e.target.travelDuration.value;
         const userName = e.target.userName.value;
         const userEmail = e.target.userEmail.value;
+        const address = e.target.address.value;
 
-        if (!/^https?:\/\/(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}(?:\/[^\s]*)?\.(?:jpg|jpeg|png|gif|bmp|webp)$/.test(image)) {
-            toast.warning('Provide a valid Photo URL');
+        if (!thumbnail) {
+            toast.warning('Please provide a thumbnail/banner image');
             return;
         }
-        else if (description.length < 25) {
+        if (images.length === 0) {
+            toast.warning('Please provide at least one view image');
+            return;
+        }
+
+        if (description.length < 25) {
             toast.warning('Description must contain at least 25 characters');
             return;
         }
 
-        const newSpot = { spotName, country, location, image, description, totalVisitors, seasonality, averageCost, travelDuration, userName, userEmail };
+        const newSpot = {
+            spotName, country, location, description, totalVisitors, seasonality,
+            averageCost, travelDuration, userName, userEmail,
+            address, thumbnail, images
+        };
 
         fetch('https://explore-se-asia-server-hwtekkgp3-md-kawsar-hossains-projects.vercel.app/spots', {
             method: 'POST',
@@ -48,8 +59,24 @@ const AddSpot = () => {
                         confirmButtonText: 'Okay'
                     });
                     e.target.reset();
+                    setThumbnail(null);
+                    setImages([]);
                 }
             })
+    };
+
+    const handleThumbnailChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setThumbnail(URL.createObjectURL(file));
+        }
+    };
+
+    const handleImagesChange = (e) => {
+        const files = Array.from(e.target.files);
+        if (files.length > 0) {
+            setImages(files.map(file => URL.createObjectURL(file)));
+        }
     };
 
     return (
@@ -67,6 +94,7 @@ const AddSpot = () => {
                             type="text"
                             id="touristsSpotName"
                             name="touristsSpotName"
+                            placeholder="Enter Tourist Spot Name"
                             className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-teal-400 bg-white"
                             required
                         />
@@ -78,6 +106,7 @@ const AddSpot = () => {
                                 type="text"
                                 id="countryName"
                                 name="countryName"
+                                placeholder="Enter Country Name"
                                 className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-teal-400 bg-white"
                                 required
                             />
@@ -89,23 +118,45 @@ const AddSpot = () => {
                                 type="text"
                                 id="location"
                                 name="location"
+                                placeholder="Enter Location"
                                 className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-teal-400 bg-white"
                                 required
                             />
                         </div>
                     </div>
                     <div>
-                        <label htmlFor="imageUrl" className="block text-lg font-medium text-gray-700 mb-1">Image URL</label>
+                        <label htmlFor="thumbnail" className="block text-lg font-medium text-gray-700 mb-1">Thumbnail / Banner Image</label>
                         <input
-                            type="url"
-                            id="imageUrl"
-                            name="imageUrl"
+                            type="file"
+                            id="thumbnail"
+                            name="thumbnail"
+                            accept="image/*"
+                            onChange={handleThumbnailChange}
                             className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-teal-400 bg-white"
-                            placeholder="https://example.com/image.jpg"
                             required
                         />
+                        {thumbnail && <img src={thumbnail} alt="Thumbnail Preview" className="mt-3 w-full h-48 object-cover rounded-lg" />}
                     </div>
-
+                    <div>
+                        <label htmlFor="images" className="block text-lg font-medium text-gray-700 mb-1">Additional Images (Multiple)</label>
+                        <input
+                            type="file"
+                            id="images"
+                            name="images"
+                            accept="image/*"
+                            multiple
+                            onChange={handleImagesChange}
+                            className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-teal-400 bg-white"
+                            required
+                        />
+                        {images.length > 0 && (
+                            <div className="mt-3 grid grid-cols-3 gap-3">
+                                {images.map((img, index) => (
+                                    <img key={index} src={img} alt={`Preview ${index}`} className="w-full h-32 object-cover rounded-lg" />
+                                ))}
+                            </div>
+                        )}
+                    </div>
                     <div>
                         <label htmlFor="shortDescription" className="block text-lg font-medium text-gray-700 mb-1">Short Description</label>
                         <textarea
@@ -117,7 +168,6 @@ const AddSpot = () => {
                             required
                         />
                     </div>
-
                     <div className="sm:flex">
                         <div className="sm:w-1/2 sm:mr-5 mb-6 sm:mb-0">
                             <label htmlFor="totalVisitorsPerYear" className="block text-lg font-medium text-gray-700 mb-1">Total Visitors Per Year</label>
@@ -130,6 +180,7 @@ const AddSpot = () => {
                                 required
                             />
                         </div>
+
                         <div className="sm:w-1/2">
                             <label htmlFor="seasonality" className="block text-lg font-medium text-gray-700 mb-1">Seasonality</label>
                             <select
@@ -171,35 +222,6 @@ const AddSpot = () => {
                             />
                         </div>
                     </div>
-
-                    <div className="sm:flex">
-                        <div className="sm:w-1/2 sm:mr-5 mb-6 sm:mb-0">
-                            <label htmlFor="userName" className="block text-lg font-medium text-gray-700 mb-1">Your Name</label>
-                            <input
-                                type="text"
-                                id="userName"
-                                name="userName"
-                                defaultValue={user.displayName}
-                                readOnly
-                                className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-teal-400 bg-gray-200"
-                                required
-                            />
-                        </div>
-
-                        <div className="sm:w-1/2">
-                            <label htmlFor="userEmail" className="block text-lg font-medium text-gray-700 mb-1">Your Email</label>
-                            <input
-                                type="email"
-                                id="userEmail"
-                                name="userEmail"
-                                defaultValue={user.email}
-                                readOnly
-                                className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-teal-400 bg-gray-200"
-                                required
-                            />
-                        </div>
-                    </div>
-
                     <div className="text-center">
                         <button
                             type="submit"
