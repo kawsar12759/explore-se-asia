@@ -42,7 +42,7 @@ const AddSpot = () => {
             address, thumbnail, images
         };
 
-        fetch('https://explore-se-asia-server-hwtekkgp3-md-kawsar-hossains-projects.vercel.app/spots', {
+        fetch('https://explore-se-asia-server.vercel.app/spots', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -85,8 +85,8 @@ const AddSpot = () => {
             style={{ backgroundImage: "url('https://i.ibb.co.com/4J5LWvG/pexels-pixabay-38238.jpg')" }}
         >
             <ToastContainer />
-            <div className="bg-white bg-opacity-80 shadow-xl rounded-xl p-10 max-w-3xl w-full">
-                <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-teal-800 mb-8 text-center">Add a New Tourist Spot</h2>
+            <div className="bg-white bg-opacity-90 shadow-2xl rounded-2xl p-10 max-w-3xl w-full">
+                <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-adventure-gradient mb-8 text-center">Add a New Tourist Spot</h2>
                 <form className="space-y-6" onSubmit={handleAddTouristSpot}>
                     <div>
                         <label htmlFor="touristsSpotName" className="block text-lg font-medium text-gray-700 mb-1">Tourist Spot Name</label>
@@ -95,7 +95,7 @@ const AddSpot = () => {
                             id="touristsSpotName"
                             name="touristsSpotName"
                             placeholder="Enter Tourist Spot Name"
-                            className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-teal-400 bg-white"
+                            className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-white"
                             required
                         />
                     </div>
@@ -132,7 +132,7 @@ const AddSpot = () => {
                             name="thumbnail"
                             accept="image/*"
                             onChange={handleThumbnailChange}
-                            className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-teal-400 bg-white"
+                            className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-white"
                             required
                         />
                         {thumbnail && <img src={thumbnail} alt="Thumbnail Preview" className="mt-3 w-full h-48 object-cover rounded-lg" />}
@@ -146,7 +146,7 @@ const AddSpot = () => {
                             accept="image/*"
                             multiple
                             onChange={handleImagesChange}
-                            className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-teal-400 bg-white"
+                            className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-white"
                             required
                         />
                         {images.length > 0 && (
@@ -162,7 +162,7 @@ const AddSpot = () => {
                         <textarea
                             id="shortDescription"
                             name="shortDescription"
-                            className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-teal-400 bg-white"
+                            className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-white"
                             rows="3"
                             placeholder="Describe the tourist spot in a few words..."
                             required
@@ -175,7 +175,7 @@ const AddSpot = () => {
                                 type="number"
                                 id="totalVisitorsPerYear"
                                 name="totalVisitorsPerYear"
-                                className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-teal-400 bg-white"
+                                className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-white"
                                 placeholder="e.g. 10000"
                                 required
                             />
@@ -186,7 +186,7 @@ const AddSpot = () => {
                             <select
                                 id="seasonality"
                                 name="seasonality"
-                                className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-teal-400 bg-white"
+                                className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-white"
                                 required
                             >
                                 <option value="">Select Seasonality</option>
@@ -205,7 +205,7 @@ const AddSpot = () => {
                                 id="averageCost"
                                 name="averageCost"
                                 placeholder="In USD ($)"
-                                className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-teal-400 bg-white"
+                                className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-white"
                                 required
                             />
                         </div>
@@ -216,7 +216,7 @@ const AddSpot = () => {
                                 type="number"
                                 id="travelDuration"
                                 name="travelDuration"
-                                className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-teal-400 bg-white"
+                                className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-white"
                                 placeholder="In Days"
                                 required
                             />
@@ -225,7 +225,7 @@ const AddSpot = () => {
                     <div className="text-center">
                         <button
                             type="submit"
-                            className="bg-teal-600 hover:bg-teal-700 text-white py-3 px-6 rounded-full font-semibold text-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
+                            className="btn-adventure text-lg px-8 py-3 font-bold"
                         >
                             Add Tourist Spot
                         </button>

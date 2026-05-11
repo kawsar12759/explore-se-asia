@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+@layer components {
+  .btn-adventure {
+    @apply px-6 py-3 bg-gradient-adventure text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95;
+  }
+
+  .btn-adventure-outline {
+    @apply px-6 py-3 border-2 border-adventure-500 text-adventure-600 font-semibold rounded-lg transition-all duration-300 hover:bg-adventure-50 hover:shadow-md;
+  }
+
+  .card-adventure {
+    @apply bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
+  }
+
+  .badge-adventure {
+    @apply inline-block px-3 py-1 bg-adventure-100 text-adventure-700 text-xs font-semibold rounded-full;
+  }
+
+  .badge-explore {
+    @apply inline-block px-3 py-1 bg-explore-100 text-explore-700 text-xs font-semibold rounded-full;
+  }
+
+  .text-adventure-gradient {
+    @apply bg-gradient-adventure bg-clip-text text-transparent;
+  }
+}

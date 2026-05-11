@@ -28,17 +28,17 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('https://explore-se-asia-server-hwtekkgp3-md-kawsar-hossains-projects.vercel.app/spots')
+        loader: () => fetch('https://explore-se-asia-server.vercel.app/spots')
       },
       {
         path: "/all-spots",
         element: <AllSpot></AllSpot>,
-        loader: () => fetch('https://explore-se-asia-server-hwtekkgp3-md-kawsar-hossains-projects.vercel.app/spots')
+        loader: () => fetch('https://explore-se-asia-server.vercel.app/spots')
       },
       {
         path: '/spot-details/:id',
         element: <PrivateRoute><SpotDetails></SpotDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://explore-se-asia-server-hwtekkgp3-md-kawsar-hossains-projects.vercel.app/spots/${params.id}`)
+        loader: ({ params }) => fetch(`https://explore-se-asia-server.vercel.app/spots/${params.id}`)
       },
       {
         path: '/add-spot',
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       {
         path: '/update-spot/:id',
         element: <PrivateRoute><UpdateSpot></UpdateSpot></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://explore-se-asia-server-hwtekkgp3-md-kawsar-hossains-projects.vercel.app/spots/${params.id}`)
+        loader: ({ params }) => fetch(`https://explore-se-asia-server.vercel.app/spots/${params.id}`)
       },
       {
         path: 'update-profile',

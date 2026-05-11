@@ -41,7 +41,7 @@ const UpdateSpot = () => {
                     }
                     const newSpot = { spotName, country, location, image, description, totalVisitors, seasonality, averageCost, travelDuration, userName, userEmail };
 
-                    fetch(`https://explore-se-asia-server-hwtekkgp3-md-kawsar-hossains-projects.vercel.app/spots/${spot._id}`, {
+                    fetch(`https://explore-se-asia-server.vercel.app/spots/${spot._id}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'
@@ -76,8 +76,8 @@ const UpdateSpot = () => {
             style={{ backgroundImage: `url(${spot.image})` }}  // Add your background image URL here
         >
             <ToastContainer />
-            <div className="bg-white bg-opacity-80 shadow-xl rounded-xl p-10 max-w-3xl w-full">
-                <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-blue-900 mb-8 text-center">Update Tourist Spot</h2>
+            <div className="bg-white bg-opacity-90 shadow-2xl rounded-2xl p-10 max-w-3xl w-full">
+                <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-adventure-gradient mb-8 text-center">Update Tourist Spot</h2>
                 <form className="space-y-6" onSubmit={handleUpdateTouristSpot}>
                     {/* Tourist Spot Name Field */}
                     <div>
@@ -87,7 +87,7 @@ const UpdateSpot = () => {
                             id="touristsSpotName"
                             name="touristsSpotName"
                             defaultValue={spot.spotName}
-                            className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-300 bg-white"
+                            className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-white"
                             required
                         />
                     </div>
@@ -100,7 +100,7 @@ const UpdateSpot = () => {
                                 id="countryName"
                                 name="countryName"
                                 defaultValue={spot.country}
-                                className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-300 bg-white"
+                                className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-white"
                                 required
                             />
                         </div>
@@ -113,7 +113,7 @@ const UpdateSpot = () => {
                                 id="location"
                                 name="location"
                                 defaultValue={spot.location}
-                                className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-300 bg-white"
+                                className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-white"
                                 required
                             />
                         </div>
@@ -130,7 +130,7 @@ const UpdateSpot = () => {
                             id="imageUrl"
                             name="imageUrl"
                             defaultValue={spot.image}
-                            className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-300 bg-white"
+                            className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-white"
                             placeholder="https://example.com/image.jpg"
                             required
                         />
@@ -144,7 +144,7 @@ const UpdateSpot = () => {
                             id="shortDescription"
                             name="shortDescription"
                             defaultValue={spot.description}
-                            className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-300 bg-white"
+                            className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-white"
                             rows="3"
                             placeholder="Describe the tourist spot in a few words..."
                             required
@@ -159,7 +159,7 @@ const UpdateSpot = () => {
                                 id="totalVisitorsPerYear"
                                 name="totalVisitorsPerYear"
                                 defaultValue={spot.totalVisitors}
-                                className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-300 bg-white"
+                                className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-white"
                                 placeholder="e.g. 10000"
                                 required
                             />
@@ -173,7 +173,7 @@ const UpdateSpot = () => {
                                 id="seasonality"
                                 name="seasonality"
                                 defaultValue={spot.seasonality}
-                                className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-300 bg-white"
+                                className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-white"
                                 required
                             >
                                 <option value="">Select Seasonality</option>
@@ -193,7 +193,7 @@ const UpdateSpot = () => {
                                 name="averageCost"
                                 defaultValue={spot.averageCost}
                                 placeholder="In USD ($)"
-                                className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-300 bg-white"
+                                className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-white"
                                 required
                             />
                         </div>
@@ -208,7 +208,7 @@ const UpdateSpot = () => {
                                 id="travelDuration"
                                 name="travelDuration"
                                 defaultValue={spot.travelDuration}
-                                className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-300 bg-white"
+                                className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-white"
                                 placeholder="In Days"
                                 required
                             />
@@ -224,7 +224,7 @@ const UpdateSpot = () => {
                                 name="userName"
                                 defaultValue={user.displayName}
                                 readOnly
-                                className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-300 bg-[#e5e5e5]"
+                                className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-gray-100"
                                 required
                             />
                         </div>
@@ -239,7 +239,7 @@ const UpdateSpot = () => {
                                 name="userEmail"
                                 defaultValue={user.email}
                                 readOnly
-                                className="w-full px-5 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-300 bg-[#e5e5e5]"
+                                className="w-full px-5 py-3 border-2 border-adventure-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-adventure-500 bg-gray-100"
                                 required
                             />
                         </div>
@@ -250,7 +250,7 @@ const UpdateSpot = () => {
                     <div className="text-center">
                         <button
                             type="submit"
-                            className="bg-[#FFD700] hover:bg-[#FFC107] text-[#008080] py-3 px-6 rounded-full font-semibold text-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 "
+                            className="btn-adventure text-lg px-8 py-3 font-bold"
                         >
                             Update Tourist Spot
                         </button>

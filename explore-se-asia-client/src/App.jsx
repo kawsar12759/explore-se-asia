@@ -7,9 +7,11 @@ function App() {
   
 
   return (
-    <div style={{minWidth:'350px'}}>
+    <div style={{minWidth:'350px'}} className="bg-white">
       <Navbar></Navbar>    
-      <Outlet></Outlet>
+      <main className="min-h-screen">
+        <Outlet></Outlet>
+      </main>
       <Footer></Footer>
     </div>
   )
