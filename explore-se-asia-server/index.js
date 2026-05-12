@@ -28,6 +28,7 @@ async function run() {
         const spotCollection = client.db('exploreSEAsiaDB').collection('spots');
         const reviewCollection = client.db('exploreSEAsiaDB').collection('reviews');
         const wishlistCollection = client.db('exploreSEAsiaDB').collection('wishlists');
+        const userCollection = client.db('exploreSEAsiaDB').collection('users');
 
         // ============ SPOTS ENDPOINTS ============
         app.get('/spots', async (req, res) => {
@@ -175,6 +176,50 @@ async function run() {
             const spotId = req.params.spotId;
             const query = { userEmail: email, spotId: spotId };
             const result = await wishlistCollection.deleteOne(query);
+            res.send(result);
+        })
+
+        // ============ USER PROFILE ENDPOINTS ============
+        app.get('/users/:email', async (req, res) => {
+            const email = req.params.email;
+            const query = { email: email };
+            const result = await userCollection.findOne(query);
+            if (!result) {
+                return res.send({ email: email, name: 'Traveler', bio: '', location: '' });
+            }
+            res.send(result);
+        })
+
+        app.post('/users', async (req, res) => {
+            const userData = req.body;
+            const email = userData.email;
+            const query = { email: email };
+            const options = { upsert: true };
+            const updateData = {
+                $set: {
+                    name: userData.name,
+                    email: userData.email,
+                    bio: userData.bio || '',
+                    location: userData.location || '',
+                    updatedAt: new Date()
+                }
+            };
+            
+            // Set joinedAt only if it's a new document
+            if (!await userCollection.findOne(query)) {
+                updateData.$set.joinedAt = new Date();
+            }
+            
+            const result = await userCollection.updateOne(query, updateData, options);
+            res.send(result);
+        })
+
+        // Get user's reviews
+        app.get('/reviews/user/:email', async (req, res) => {
+            const email = req.params.email;
+            const query = { userEmail: email };
+            const cursor = reviewCollection.find(query);
+            const result = await cursor.toArray();
             res.send(result);
         })
 
