@@ -19,14 +19,14 @@ const MyList = () => {
     }, [user?.email])
 
     const fetchMySpots = () => {
-        fetch(`http://localhost:5000/spots/byuser/${user.email}`)
+        fetch(`https://explore-se-asia-server.vercel.app/spots/byuser/${user.email}`)
             .then(res => res.json())
             .then(data => setMyAddedSpots(data))
             .catch(err => console.error(err));
     }
 
     const fetchWishlists = () => {
-        fetch(`http://localhost:5000/wishlists/user/${user.email}`)
+        fetch(`https://explore-se-asia-server.vercel.app/wishlists/user/${user.email}`)
             .then(res => res.json())
             .then(data => setMyWishlists(data))
             .catch(err => console.error(err));
@@ -43,7 +43,7 @@ const MyList = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/spots/${id}`, {
+                fetch(`https://explore-se-asia-server.vercel.app/spots/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -72,7 +72,7 @@ const MyList = () => {
             confirmButtonText: "Yes, remove it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/wishlists/${id}`, {
+                fetch(`https://explore-se-asia-server.vercel.app/wishlists/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { FiStar } from "react-icons/fi";
 import { FaHeart } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -10,6 +10,29 @@ const ReviewSection = ({ spotId, spotName, onAddReview }) => {
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
     const [hoveredStar, setHoveredStar] = useState(0);
+    const [loading, setLoading] = useState(true);
+
+    // Fetch reviews when component mounts or spotId changes
+    useEffect(() => {
+        fetchReviews();
+    }, [spotId]);
+
+    const fetchReviews = async () => {
+        try {
+            setLoading(true);
+            const apiUrl = import.meta.env.VITE_API_URL || 'https://explore-se-asia-server.vercel.app';
+            const response = await fetch(`${apiUrl}/reviews/${spotId}`);
+            
+            if (response.ok) {
+                const data = await response.json();
+                setReviews(Array.isArray(data) ? data : []);
+            }
+        } catch (error) {
+            console.error('Error fetching reviews:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const handleAddReview = async (e) => {
         e.preventDefault();
@@ -37,7 +60,8 @@ const ReviewSection = ({ spotId, spotName, onAddReview }) => {
         };
 
         try {
-            const response = await fetch("http://localhost:5000/reviews", {
+            const apiUrl = import.meta.env.VITE_API_URL || 'https://explore-se-asia-server.vercel.app';
+            const response = await fetch(`${apiUrl}/reviews`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -178,7 +202,11 @@ const ReviewSection = ({ spotId, spotName, onAddReview }) => {
                     Traveler Reviews ({reviews.length})
                 </h4>
 
-                {reviews.length === 0 ? (
+                {loading ? (
+                    <div className="text-center py-12 bg-gray-50 rounded-xl">
+                        <p className="text-gray-600">Loading reviews...</p>
+                    </div>
+                ) : reviews.length === 0 ? (
                     <div className="text-center py-12 bg-gray-50 rounded-xl">
                         <p className="text-gray-600">
                             No reviews yet. Be the first to share your experience!

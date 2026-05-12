@@ -18,6 +18,7 @@ import UpdateProfile from './components/UpdateProfile/UpdateProfile.jsx';
 import SpotDetails from './components/SpotDetails/SpotDetails.jsx';
 import UpdateSpot from './components/UpdateSpot/UpdateSpot.jsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
+import UserProfile from './components/UserProfile/UserProfile.jsx';
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: 'update-profile',
         element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
+      },
+      {
+        path: '/profile/:email',
+        element: <UserProfile></UserProfile>
       },
       {
         path: '/login',
