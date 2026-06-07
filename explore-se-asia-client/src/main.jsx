@@ -19,6 +19,9 @@ import SpotDetails from './components/SpotDetails/SpotDetails.jsx';
 import UpdateSpot from './components/UpdateSpot/UpdateSpot.jsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 import UserProfile from './components/UserProfile/UserProfile.jsx';
+import Itinerary from './components/Itinerary/Itinerary.jsx';
+import ItineraryCreate from './components/Itinerary/ItineraryCreate.jsx';
+import ItineraryDetails from './components/Itinerary/ItineraryDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -62,6 +65,18 @@ const router = createBrowserRouter([
       {
         path: '/profile/:email',
         element: <UserProfile></UserProfile>
+      },
+      {
+        path: '/itineraries',
+        element: <PrivateRoute><Itinerary></Itinerary></PrivateRoute>
+      },
+      {
+        path: '/itinerary/create',
+        element: <PrivateRoute><ItineraryCreate></ItineraryCreate></PrivateRoute>
+      },
+      {
+        path: '/itinerary/:id',
+        element: <PrivateRoute><ItineraryDetails></ItineraryDetails></PrivateRoute>
       },
       {
         path: '/login',

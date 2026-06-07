@@ -29,6 +29,7 @@ async function run() {
         const reviewCollection = client.db('exploreSEAsiaDB').collection('reviews');
         const wishlistCollection = client.db('exploreSEAsiaDB').collection('wishlists');
         const userCollection = client.db('exploreSEAsiaDB').collection('users');
+        const itineraryCollection = client.db('exploreSEAsiaDB').collection('itineraries');
 
         // ============ SPOTS ENDPOINTS ============
         app.get('/spots', async (req, res) => {
@@ -220,6 +221,100 @@ async function run() {
             const query = { userEmail: email };
             const cursor = reviewCollection.find(query);
             const result = await cursor.toArray();
+            res.send(result);
+        })
+
+        // ============ ITINERARY ENDPOINTS ============
+        // Get all itineraries for a user
+        app.get('/itineraries/user/:email', async (req, res) => {
+            const email = req.params.email;
+            const query = { userEmail: email };
+            const cursor = itineraryCollection.find(query).sort({ createdAt: -1 });
+            const result = await cursor.toArray();
+            res.send(result);
+        })
+
+        // Get single itinerary by ID
+        app.get('/itineraries/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) };
+            const result = await itineraryCollection.findOne(query);
+            res.send(result);
+        })
+
+        // Create new itinerary
+        app.post('/itineraries', async (req, res) => {
+            const newItinerary = req.body;
+            const itinerary = {
+                userEmail: newItinerary.userEmail,
+                title: newItinerary.title,
+                description: newItinerary.description || '',
+                startDate: new Date(newItinerary.startDate),
+                endDate: new Date(newItinerary.endDate),
+                spots: [],
+                createdAt: new Date(),
+                updatedAt: new Date()
+            };
+            const result = await itineraryCollection.insertOne(itinerary);
+            res.send(result);
+        })
+
+        // Add spot to itinerary
+        app.post('/itineraries/:id/spots', async (req, res) => {
+            const id = req.params.id;
+            const { spotId, date, notes, duration } = req.body;
+            const query = { _id: new ObjectId(id) };
+            const update = {
+                $push: {
+                    spots: {
+                        spotId: spotId,
+                        date: new Date(date),
+                        notes: notes || '',
+                        duration: duration || 1
+                    }
+                },
+                $set: { updatedAt: new Date() }
+            };
+            const result = await itineraryCollection.updateOne(query, update);
+            res.send(result);
+        })
+
+        // Remove spot from itinerary
+        app.delete('/itineraries/:id/spots/:spotId', async (req, res) => {
+            const id = req.params.id;
+            const spotId = req.params.spotId;
+            const query = { _id: new ObjectId(id) };
+            const update = {
+                $pull: { spots: { spotId: spotId } },
+                $set: { updatedAt: new Date() }
+            };
+            const result = await itineraryCollection.updateOne(query, update);
+            res.send(result);
+        })
+
+        // Update itinerary
+        app.put('/itineraries/:id', async (req, res) => {
+            const id = req.params.id;
+            const { title, description, startDate, endDate } = req.body;
+            const query = { _id: new ObjectId(id) };
+            const update = {
+                $set: {
+                    title: title,
+                    description: description,
+                    startDate: new Date(startDate),
+                    endDate: new Date(endDate),
+                    updatedAt: new Date()
+                }
+            };
+            const result = await itineraryCollection.updateOne(query, update);
+            res.send(result);
+        })
+
+        // Delete itinerary
+        app.delete('/itineraries/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) };
+            const result = await itineraryCollection.deleteOne(query);
             res.send(result);
         })
 

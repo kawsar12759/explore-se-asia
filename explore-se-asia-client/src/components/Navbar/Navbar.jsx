@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-import { FiMenu, FiMapPin, FiHeart } from "react-icons/fi";
+import { FiMenu, FiMapPin, FiHeart, FiCalendar } from "react-icons/fi";
 import logo from "../../../public/logo.png";
 
 const Navbar = () => {
@@ -53,6 +53,12 @@ const Navbar = () => {
                     <li>
                         <NavLink to="/my-list" className={navLinkClass}>
                             My List
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/itineraries" className={navLinkClass}>
+                            <FiCalendar size={16} />
+                            Itineraries
                         </NavLink>
                     </li>
                     <li className="inline-block sm:hidden">
